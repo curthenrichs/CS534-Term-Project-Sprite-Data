@@ -20,7 +20,11 @@ TODO
 TODO
 
 ## Todo Checklist
-* allow separation / gap pixels in sprite-sheet for extraction
 * manually sort sprites generated into classes useful for training
-* compress sprites for training, use raw link to get access
-* using the manually separated data, train a classifier for new data
+* compress sprites for training, use raw link to get access. The data file should be in a form that is easily extracted for numpy.
+* using the manually separated data, train a classifier for new data.
+
+## Acknowledgements
+All sprite-sheets / datasets aggregated are used for this project in an academic setting. All sources must be credited below as either requested by the source or with an appropriate format. Any reference will include a link to the original. Note that any sprite data stored in this repository should not be considered the original source. Nor does this repository claim ownership of the sprite data. Data contributions should come from sources with licenses that provide for non-commercial, academic use.
+
+* TODO add sources here
