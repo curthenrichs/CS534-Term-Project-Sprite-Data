@@ -27,4 +27,6 @@ TODO
 ## Acknowledgements
 All sprite-sheets / datasets aggregated are used for this project in an academic setting. All sources must be credited below as either requested by the source or with an appropriate format. Any reference will include a link to the original. Note that any sprite data stored in this repository should not be considered the original source. Nor does this repository claim ownership of the sprite data. Data contributions should come from sources with licenses that provide for non-commercial, academic use.
 
-* TODO add sources here
+* Henrique Laxarini (7Soul1). 496 Pixel Art Icons for Medieval/Fantasy RPG. License: CC0 - Public Domain. Online: https://opengameart.org/content/496-pixel-art-icons-for-medievalfantasy-rpg
+* MedicineStorm. Dungeon Crawl 32x32 Tiles Supplemental. License: CC0 - Public Domain. Online: https://opengameart.org/content/dungeon-crawl-32x32-tiles-supplemental
+* David E. Gervais. Roguelike Tiles (Large Collection). License: CC-BY 3.0. Online: https://opengameart.org/content/roguelike-tiles-large-collection

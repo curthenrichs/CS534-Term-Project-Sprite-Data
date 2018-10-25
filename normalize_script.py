@@ -14,7 +14,9 @@ def enforce_RGBA_channels(img):
         if len(img.shape) == 2 or img.shape[2] == 1:
             # gray-scale to average RGB + full A
             alpha = np.ones((img.shape[0],img.shape[1],1))
-            img = np.concatenate((img,img,img,alpha),axis=2)
+            if len(img.shape) == 2:
+                img = np.reshape(img,(img.shape[0],img.shape[1],1))
+            img = np.concatenate((img,img,img,alpha), axis=2)
         elif len(img.shape) < 2 or img.shape[2] != 3:
             raise Exception('Image is not standard size')
         else:

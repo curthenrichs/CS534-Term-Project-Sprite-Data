@@ -1,8 +1,9 @@
 # Project specific
 extracted/*
 normalized/*
-unprocessed/*
+sorted-classes/*
 sorted-dimensions/*
+unprocessed/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
