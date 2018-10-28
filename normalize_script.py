@@ -128,8 +128,9 @@ if __name__ == '__main__':
 
     images = {}
     for f in files:
-        images[f] = {}
-        images[f]['img'] = mpimg.imread(os.path.join(sourceDirectory,f))
+        if not f == 'desktop.ini':
+            images[f] = {}
+            images[f]['img'] = mpimg.imread(os.path.join(sourceDirectory,f))
 
     images = normalize_images(images,normX,normY)
 

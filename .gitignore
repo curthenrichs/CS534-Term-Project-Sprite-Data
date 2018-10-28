@@ -4,6 +4,7 @@ normalized/*
 sorted-classes/*
 sorted-dimensions/*
 unprocessed/*
+packaged/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
