@@ -1,3 +1,8 @@
+"""
+Sorts images in a directory by their shape.
+
+Usefull if a directory contains multiple sizes of images.
+"""
 
 import sys
 import os
@@ -8,6 +13,12 @@ import numpy as np
 import traceback
 
 def sort_images(images):
+    """ Sorts an image by its shape
+
+    Images is a dictionary of {key : { 'img': np.array }} at input.
+    For each image the shape is is used to compute a cluster id. This id is
+    appended to the image sub-dictionary.
+    """
 
     for imgName in images.keys():
         try:
@@ -21,6 +32,7 @@ def sort_images(images):
 
 if __name__ == '__main__':
 
+    # Get command-line args
     if len(sys.argv) != 3:
         print('{} sourceDirectory destinationDirectory'.format(sys.argv[0]))
         exit()
@@ -28,15 +40,19 @@ if __name__ == '__main__':
         sourceDirectory = sys.argv[1]
         destinationDirectory = sys.argv[2]
 
+    # Get files in directory
     files = [f for f in os.listdir(sourceDirectory) if os.path.isfile(os.path.join(sourceDirectory,f))]
 
+    # Open images and place into dictionary
     images = {}
     for f in files:
         images[f] = {}
         images[f]['img'] = mpimg.imread(os.path.join(sourceDirectory,f))
 
+    # process images
     images = sort_images(images)
 
+    # save images into directories based on cluster id
     for imgName in images.keys():
         try:
             shapeDirPath = os.path.join(destinationDirectory, images[imgName]['cluster'])

@@ -1,3 +1,8 @@
+"""
+Package a directory of sprites into a numpy serialized file (.npy) and a label
+array as another (.npy)
+"""
+
 import sys
 import os
 from os import listdir
@@ -9,7 +14,12 @@ import numpy as np
 import traceback
 
 def store_n_label(srcDir,images,label,recCount):
-    print(srcDir)
+    """
+    Recursively read in all images and generate labels
+
+    images is in format of { key: { 'img': np.array, 'dir': string, 'lbl': string }}
+    labels are generated from the directory hierarchy, appended by '_'.
+    """
 
     if recCount < 0:
         return images
@@ -28,6 +38,10 @@ def store_n_label(srcDir,images,label,recCount):
     return images
 
 def package(destFileName, images):
+    """
+    Given image dictionary and location, save numpy files
+    """
+
     labelList = []
 
     first = True
@@ -49,6 +63,7 @@ def package(destFileName, images):
 
 if __name__ == '__main__':
 
+    # Get command-line args
     if len(sys.argv) != 5:
         print('{} sourceDirectory destinationFileName rootLabel recursiveLimit'.format(sys.argv[0]))
         exit()
@@ -58,5 +73,6 @@ if __name__ == '__main__':
         rootLabel = sys.argv[3]
         recursiveLimit = int(sys.argv[4])
 
+    # Save the images
     images = store_n_label(sourceDirectory,{},rootLabel,recursiveLimit)
     package(destinationFileName,images)

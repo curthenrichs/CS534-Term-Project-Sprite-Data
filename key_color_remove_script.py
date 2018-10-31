@@ -10,6 +10,15 @@ import numpy as np
 import traceback
 
 def enforce_RGBA_channels(img):
+    """
+    Convert an image to RGBA if possible.
+
+    Cases supported:
+        + Already in RGBA
+        + In RGB
+        + In Grayscale (single-channel)
+    """
+
     if len(img.shape) < 3 or img.shape[2] < 4:
         if len(img.shape) == 2 or img.shape[2] == 1:
             # gray-scale to average RGB + full A
@@ -28,6 +37,9 @@ def enforce_RGBA_channels(img):
     return img
 
 def normalize_key_color(images,keyR,keyG,keyB,keyA):
+    """
+    Converts specified RGBA color into transparent black
+    """
 
     target = np.array([keyR,keyG,keyB,keyA])
     normal = np.array([0,0,0,0])
@@ -52,6 +64,7 @@ def normalize_key_color(images,keyR,keyG,keyB,keyA):
 
 if __name__ == "__main__":
 
+    # Get command-line args
     if len(sys.argv) != 7:
         print('{} sourceDirectory destinationDirectory keyR keyG keyB keyA'.format(sys.argv[0]))
         exit()
@@ -66,13 +79,16 @@ if __name__ == "__main__":
     # get all files in directory,
     files = [f for f in listdir(sourceDirectory) if isfile(join(sourceDirectory, f))]
 
+    # Open images and place into dictionary
     images = {}
     for f in files:
         images[f] = {}
         images[f]['img'] = mpimg.imread(os.path.join(sourceDirectory,f))
 
+    # process images
     images = normalize_key_color(images,keyR,keyG,keyB,keyA)
 
+    # save images into directory
     for imgName in images.keys():
         try:
             mpimg.imsave(join(destinationDirectory,imgName), images[imgName]['img'])

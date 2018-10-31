@@ -1,3 +1,9 @@
+"""
+Normalize the image to RGBA with provided pixel resolution
+
+Note: padding and cropping could be more elegant. I did it quick and frankly it
+works.
+"""
 
 import sys
 import os
@@ -10,6 +16,15 @@ import numpy as np
 import traceback
 
 def enforce_RGBA_channels(img):
+    """
+    Convert an image to RGBA if possible.
+
+    Cases supported:
+        + Already in RGBA
+        + In RGB
+        + In Grayscale (single-channel)
+    """
+
     if len(img.shape) < 3 or img.shape[2] < 4:
         if len(img.shape) == 2 or img.shape[2] == 1:
             # gray-scale to average RGB + full A
@@ -28,6 +43,10 @@ def enforce_RGBA_channels(img):
     return img
 
 def crop_image_x(img, normX):
+    """
+    Crops image along X direction (balanced)
+    """
+
     diff = img.shape[1] - normX
     startX = diff//2
     if diff % 2 != 0:
@@ -37,6 +56,10 @@ def crop_image_x(img, normX):
     return img[:,startX:stopX]
 
 def crop_image_y(img, normY):
+    """
+    Crops image along Y direction (balanced)
+    """
+
     diff = img.shape[0] - normY
     startY = diff//2
     if diff % 2 != 0:
@@ -46,6 +69,10 @@ def crop_image_y(img, normY):
     return img[startY:stopY,:]
 
 def pad_image_x(img, normX):
+    """
+    Pads image along X direction (balanced)
+    """
+
     diff = normX - img.shape[1]
     padWidth = diff//2
 
@@ -65,6 +92,10 @@ def pad_image_x(img, normX):
     )
 
 def pad_image_y(img, normY):
+    """
+    Pads image along Y direction (balanced)
+    """
+
     diff = normY - img.shape[0]
     padWidth = diff//2
 
@@ -84,10 +115,12 @@ def pad_image_y(img, normY):
     )
 
 def normalize_images(images, normX, normY):
-    # process the images to fit new size
-    # if original size is greater than norm -> crop image by center
-    # if original size is less than norm -> padd image with zeros
-    # regardless enforce RGBA representation
+    """
+    process the images to fit new size
+    if original size is greater than norm -> crop image by center
+    if original size is less than norm -> padd image with zeros
+    regardless enforce RGBA representation
+    """
 
     for imgName in images.keys():
         try:
@@ -114,6 +147,7 @@ def normalize_images(images, normX, normY):
 
 if __name__ == '__main__':
 
+    # Get command-line args
     if len(sys.argv) != 5:
         print('{} sourceDirectory destinationDirectory normX normY'.format(sys.argv[0]))
         exit()
@@ -126,14 +160,17 @@ if __name__ == '__main__':
     # get all files in directory,
     files = [f for f in listdir(sourceDirectory) if isfile(join(sourceDirectory, f))]
 
+    # Open images and place into dictionary
     images = {}
     for f in files:
         if not f == 'desktop.ini':
             images[f] = {}
             images[f]['img'] = mpimg.imread(os.path.join(sourceDirectory,f))
 
+    # process images
     images = normalize_images(images,normX,normY)
 
+    # save images into directory
     for imgName in images.keys():
         try:
             mpimg.imsave(join(destinationDirectory,imgName), images[imgName]['img'])

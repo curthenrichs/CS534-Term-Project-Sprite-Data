@@ -1,3 +1,10 @@
+"""
+Process a sprite-sheet
+
+Takes a single image, extracts the sprites, normalizes them, and saves them to
+a directory.
+"""
+
 import os
 import sys
 
@@ -10,6 +17,7 @@ import sort_dimensions_script
 
 if __name__ == '__main__':
 
+    # Get command-line args
     if len(sys.argv) != 7:
         print('{} sourceFile destinationDirectory spriteX spriteY normX normY'.format(sys.argv[0]))
         exit()
@@ -21,12 +29,17 @@ if __name__ == '__main__':
         normX = int(sys.argv[5])
         normY = int(sys.argv[6])
 
+    # Read a sprite-sheet in
     img = mpimg.imread(sourceFile)
 
+    # process the sprite-sheet into a set of sprites
+    # normalize to RGBA
+    # label based on shape (only 1 label)
     images = extraction_script.extract_images(img, spriteX, spriteY)
     images = normalize_script.normalize_images(images,normX,normY)
     images = sort_dimensions_script.sort_images(images)
 
+    # save images
     for imgName in images.keys():
         try:
             shapeDirPath = os.path.join(destinationDirectory, images[imgName]['cluster'])
