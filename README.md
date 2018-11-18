@@ -31,3 +31,5 @@ All sprite-sheets / datasets aggregated are used for this project in an academic
 * Henrique Laxarini (7Soul1). 496 Pixel Art Icons for Medieval/Fantasy RPG. License: CC0 - Public Domain. Online: https://opengameart.org/content/496-pixel-art-icons-for-medievalfantasy-rpg
 * MedicineStorm. Dungeon Crawl 32x32 Tiles Supplemental. License: CC0 - Public Domain. Online: https://opengameart.org/content/dungeon-crawl-32x32-tiles-supplemental
 * David E. Gervais. Roguelike Tiles (Large Collection). License: CC-BY 3.0. Online: https://opengameart.org/content/roguelike-tiles-large-collection
+* Lanea Zimmerman (Sharm). Tiny 16: Basic. License: CC-BY 3.0. Online: https://opengameart.org/content/tiny-16-basic
+* ArMM1998. Zelda-like Titlesets and Sprites. License: CC0. Online: https://opengameart.org/content/zelda-like-tilesets-and-sprites
