@@ -35,3 +35,11 @@ All sprite-sheets / datasets aggregated are used for this project in an academic
 * ArMM1998. Zelda-like Titlesets and Sprites. License: CC0. Online: https://opengameart.org/content/zelda-like-tilesets-and-sprites
 * Zabin, Hyptosis, Danial Cook. Castle Tiles for RPG's. License: CC-BY 3.0. Online: https://opengameart.org/content/castle-tiles-for-rpgs
 * Zabin, Daneeklu, Jetrel, Hyptosis, Redshrike, Bertram. RPG Tiles: Cobble Stone Paths & Town Objects. License: CC-BY-SA 3.0. Online: https://opengameart.org/content/rpg-tiles-cobble-stone-paths-town-objects
+
+## Team
+This project was developed for CS 534 - Computational Photography fall 2018 course at the University of Wisconsin Madison.
+
+We are,
+- Curt Henrichs (Graduate Student)
+- Sayem Wani (Undergrad Student)
+- Saheen Feroz (Undergrad Student)
